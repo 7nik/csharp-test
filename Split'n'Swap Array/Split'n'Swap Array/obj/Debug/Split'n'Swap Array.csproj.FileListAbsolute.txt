@@ -1,0 +1,6 @@
+C:\Users\7nik\source\repos\Split'n'Swap Array\Split'n'Swap Array\bin\Debug\Split'n'Swap Array.exe.config
+C:\Users\7nik\source\repos\Split'n'Swap Array\Split'n'Swap Array\bin\Debug\Split'n'Swap Array.exe
+C:\Users\7nik\source\repos\Split'n'Swap Array\Split'n'Swap Array\bin\Debug\Split'n'Swap Array.pdb
+C:\Users\7nik\source\repos\Split'n'Swap Array\Split'n'Swap Array\obj\Debug\Split'n'Swap Array.csprojAssemblyReference.cache
+C:\Users\7nik\source\repos\Split'n'Swap Array\Split'n'Swap Array\obj\Debug\Split'n'Swap Array.exe
+C:\Users\7nik\source\repos\Split'n'Swap Array\Split'n'Swap Array\obj\Debug\Split'n'Swap Array.pdb

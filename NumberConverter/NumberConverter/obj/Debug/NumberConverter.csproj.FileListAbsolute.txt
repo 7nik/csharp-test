@@ -1,0 +1,6 @@
+C:\Users\7nik\source\repos\NumberConverter\NumberConverter\bin\Debug\NumberConverter.exe.config
+C:\Users\7nik\source\repos\NumberConverter\NumberConverter\bin\Debug\NumberConverter.exe
+C:\Users\7nik\source\repos\NumberConverter\NumberConverter\bin\Debug\NumberConverter.pdb
+C:\Users\7nik\source\repos\NumberConverter\NumberConverter\obj\Debug\NumberConverter.csprojAssemblyReference.cache
+C:\Users\7nik\source\repos\NumberConverter\NumberConverter\obj\Debug\NumberConverter.exe
+C:\Users\7nik\source\repos\NumberConverter\NumberConverter\obj\Debug\NumberConverter.pdb
