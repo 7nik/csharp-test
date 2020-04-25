@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище LessSimpleGameBookmakerEntityDataContainer" CdmEntityContainer="csharp_testEntities">
+    <EntitySetMapping Name="Games">
+      <EntityTypeMapping TypeName="LessSimpleGameBookmaker.EntityData.Game">
+        <MappingFragment StoreEntitySet="Games">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="HomeTeamID" ColumnName="Home_team_id" />
+          <ScalarProperty Name="AwayTeamID" ColumnName="Away_team_id" />
+          <ScalarProperty Name="HomeTeamScore" ColumnName="Home_team_score" />
+          <ScalarProperty Name="AwayTeamScore" ColumnName="Away_team_score" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Teams">
+      <EntityTypeMapping TypeName="LessSimpleGameBookmaker.EntityData.Team">
+        <MappingFragment StoreEntitySet="Teams">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="HomeCity" ColumnName="Home_city" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

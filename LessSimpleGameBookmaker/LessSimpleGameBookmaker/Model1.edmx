@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище LessSimpleGameBookmaker.EntityData" Provider="MySql.Data.MySqlClient" ProviderManifestToken="8.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Games">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Home_team_id" Type="int" Nullable="false" />
+          <Property Name="Away_team_id" Type="int" Nullable="false" />
+          <Property Name="Home_team_score" Type="int" Nullable="false" />
+          <Property Name="Away_team_score" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Teams">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="text" Nullable="false" />
+          <Property Name="Home_city" Type="text" />
+        </EntityType>
+        <Association Name="Games_ibfk_1">
+          <End Role="Teams" Type="Self.Teams" Multiplicity="1" />
+          <End Role="Games" Type="Self.Games" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Games">
+              <PropertyRef Name="Home_team_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Games_ibfk_2">
+          <End Role="Teams" Type="Self.Teams" Multiplicity="1" />
+          <End Role="Games" Type="Self.Games" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Games">
+              <PropertyRef Name="Away_team_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище LessSimpleGameBookmakerEntityDataContainer">
+          <EntitySet Name="Games" EntityType="Self.Games" Schema="csharp_test" store:Type="Tables" />
+          <EntitySet Name="Teams" EntityType="Self.Teams" Schema="csharp_test" store:Type="Tables" />
+          <AssociationSet Name="Games_ibfk_1" Association="Self.Games_ibfk_1">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="Games" EntitySet="Games" />
+          </AssociationSet>
+          <AssociationSet Name="Games_ibfk_2" Association="Self.Games_ibfk_2">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="Games" EntitySet="Games" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LessSimpleGameBookmaker.EntityData" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HomeTeamID" Type="Int32" Nullable="false" a:SetterAccess="Private" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:GetterAccess="Private" />
+          <Property Name="AwayTeamID" Type="Int32" Nullable="false" a:GetterAccess="Private" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Private" />
+          <Property Name="HomeTeamScore" Type="Int32" Nullable="false" />
+          <Property Name="AwayTeamScore" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="HomeTeam" Relationship="Self.Games_ibfk_1" FromRole="Games" ToRole="Teams" />
+          <NavigationProperty Name="AwayTeam" Relationship="Self.Games_ibfk_2" FromRole="Games" ToRole="Teams" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HomeCity" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="HomeGames" Relationship="Self.Games_ibfk_1" FromRole="Teams" ToRole="Games" />
+          <NavigationProperty Name="AwayGames" Relationship="Self.Games_ibfk_2" FromRole="Teams" ToRole="Games" />
+        </EntityType>
+        <Association Name="Games_ibfk_1">
+          <End Role="Teams" Type="LessSimpleGameBookmaker.EntityData.Team" Multiplicity="1" />
+          <End Role="Games" Type="LessSimpleGameBookmaker.EntityData.Game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Games">
+              <PropertyRef Name="HomeTeamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Games_ibfk_2">
+          <End Role="Teams" Type="LessSimpleGameBookmaker.EntityData.Team" Multiplicity="1" />
+          <End Role="Games" Type="LessSimpleGameBookmaker.EntityData.Game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Games">
+              <PropertyRef Name="AwayTeamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="csharp_testEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Games" EntityType="LessSimpleGameBookmaker.EntityData.Game" />
+          <EntitySet Name="Teams" EntityType="LessSimpleGameBookmaker.EntityData.Team" />
+          <AssociationSet Name="Games_ibfk_1" Association="Self.Games_ibfk_1">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="Games" EntitySet="Games" />
+          </AssociationSet>
+          <AssociationSet Name="Games_ibfk_2" Association="Self.Games_ibfk_2">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="Games" EntitySet="Games" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище LessSimpleGameBookmakerEntityDataContainer" CdmEntityContainer="csharp_testEntities">
+          <EntitySetMapping Name="Games">
+            <EntityTypeMapping TypeName="LessSimpleGameBookmaker.EntityData.Game">
+              <MappingFragment StoreEntitySet="Games">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="HomeTeamID" ColumnName="Home_team_id" />
+                <ScalarProperty Name="AwayTeamID" ColumnName="Away_team_id" />
+                <ScalarProperty Name="HomeTeamScore" ColumnName="Home_team_score" />
+                <ScalarProperty Name="AwayTeamScore" ColumnName="Away_team_score" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teams">
+            <EntityTypeMapping TypeName="LessSimpleGameBookmaker.EntityData.Team">
+              <MappingFragment StoreEntitySet="Teams">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="HomeCity" ColumnName="Home_city" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
